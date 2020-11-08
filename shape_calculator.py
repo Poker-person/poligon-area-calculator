@@ -38,21 +38,32 @@ class Rectangle:
                 line = pic + "\n" + line
             return line
 
-    #def get_amount_inside(self):
+    def get_amount_inside(self, shape):
+        areax = shape.get_area()
+        areay = self.get_area()
+        amount = 0
+        while areay >= areax:
+            areay = areay - areax
+            amount = amount + 1
+        return amount
 
-class Square:
 
+class Square(Rectangle):
+    def __init__(self, side):
+        self.width = side
+        self.height = side
 
+    def __str__(self):
+        return f"Square(side={self.width})"
 
-import shape_calculator
+    def set_side(self, new_side):
+        self.width = new_side
+        self.height = new_side
 
-rect = shape_calculator.Rectangle(10, 5)
-print(rect.get_area())
-rect.set_height(3)
-print(rect.get_perimeter())
-print(rect.get_diagonal())
-print(rect)
-print(rect.get_picture())
-rect.set_height(8)
-rect.set_width(16)
-print(rect.get_amount_inside(sq))
+    def set_width(self, side):
+        self.width = side
+        self.height = side
+
+    def set_height(self, side):
+        self.width = side
+        self.height = side
